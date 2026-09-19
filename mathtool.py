@@ -16,7 +16,26 @@ if len(argv) == 1 or argv[1] == '--help': #если аргументов нет 
     spravka() 
 
 if argv[1] == 'solve':
-    if len(argv) == 2:
-
-
-
+    if len(argv) == 2: #если введена команда solve без аргументов, то запрашиваем коэффициенты у пользователя
+        try:
+            A = int(input('Введите коэффициент A: ')) 
+            B = int(input('Введите коэффициент B: ')) 
+            C = int(input('Введите коэффициент C: ')) 
+        except ValueError:
+            print('Ошибка: коэффициенты должны быть целыми числами')
+            exit(1)
+    elif len(argv) == 8: #если введена команда solve с аргументами, то извлекаем коэффициенты из аргументов
+            if argv[2] == '-a' and argv[4] == '-b' and argv[6] == '-c':
+                try:
+                    A = int(argv[3]) 
+                    B = int(argv[5]) 
+                    C = int(argv[7]) 
+                except ValueError:
+                    print('Ошибка: коэффициенты должны быть целыми числами')
+                    exit(1)
+            else:
+                print('Ошибка: неверный формат аргументов')
+                exit(1)
+    if abs(A) > 10000 or abs(B) > 10000 or abs(C) > 10000:
+        print("ОШИБКА: значение вне допустимого диапазона")
+        exit(1)
