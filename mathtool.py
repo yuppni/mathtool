@@ -15,6 +15,10 @@ def spravka(): #функция вывода справки
 if len(argv) == 1 or argv[1] == '--help': #если аргументов нет или введена команда --help вывод справк
     spravka() 
 
+if len(argv) > 1 and argv[1] != 'solve' and argv[1] != '--help':
+    print('ОШИБКА: неизвестная команда', file=stderr)
+    exit(1)
+
 if argv[1] == 'solve':
     if len(argv) == 2: #если введена команда solve без аргументов, то запрашиваем коэффициенты у пользователя
         try:
@@ -34,7 +38,7 @@ if argv[1] == 'solve':
                     print('ОШИБКА: коэффициент не является целым числом', file=stderr)
                     exit(1)
             else:
-                print('ОШИБКА: неверный формат аргументов')
+                print('ОШИБКА: неверный формат аргументов', file=stderr)
                 exit(1)
     else:
         print('ОШИБКА: неверный набор параметров', file=stderr)
