@@ -1,4 +1,3 @@
-from math import * #импорт необходимых математических функций
 from sys import * #импорт необходимых функций для работы с системными параметрами
 from calc.equation import *
 from calc.stats import validate as validate_stats, REPORT
@@ -135,22 +134,3 @@ def main(argv):
 if __name__ == "__main__":
     exit(main(argv[1:]))
 
-try:
-    kind, D, roots = solve(A, B, C)
-except ValueError as error:
-    print(f"ОШИБКА: {error}", file=stderr)
-    exit(1)
-
-if kind == "квадратное":
-    print("Уравнение является квадратным")
-    print(f"Дискриминант: D = {D}")
-
-    if len(roots) == 2:
-        print(f"Корни уравнения: x1 = {roots[0]:.3f}, x2 = {roots[1]:.3f}")
-    elif len(roots) == 1:
-        print(f"Уравнение имеет один корень: x = {roots[0]:.3f}")
-    else:
-        print("Уравнение не имеет действительных корней")
-else:
-    print("Уравнение является линейным")
-    print(f"Корень уравнения: x = {roots[0]:.3f}")
