@@ -4,18 +4,19 @@ MAX_VALUE = 10000  # ограничение коэффициентов
 
 
 def validate(A, B, C):
-    if abs(A) > MAX_VALUE:
-        raise ValueError("коэффициент A вне допустимого диапазона")
+    # Проверяем каждый коэффициент одним циклом
+    coefficients = {"A": A, "B": B, "C": C}
 
-    if abs(B) > MAX_VALUE:
-        raise ValueError("коэффициент B вне допустимого диапазона")
-
-    if abs(C) > MAX_VALUE:
-        raise ValueError("коэффициент C вне допустимого диапазона")
+    for name, value in coefficients.items():
+        if abs(value) > MAX_VALUE:
+            raise ValueError(
+                f"коэффициент {name} вне допустимого диапазона"
+            )
 
     if A == 0 and B == 0:
-        raise ValueError("выражение не является уравнением (A и B равны нулю)")
-
+        raise ValueError(
+            "выражение не является уравнением (A и B равны нулю)"
+        )
 
 def solve(A, B, C):
     validate(A, B, C)
