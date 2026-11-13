@@ -5,9 +5,9 @@ MAX_VALUE = 10000  # ограничение коэффициентов
 
 def validate(A, B, C):
     # Проверяем каждый коэффициент одним циклом
-    coefficients = {"A": A, "B": B, "C": C}
+    coefficients = {"A": A, "B": B, "C": C} #создаём словарь с коэффициентами для проверки
 
-    for name, value in coefficients.items():
+    for name, value in coefficients.items(): 
         if abs(value) > MAX_VALUE:
             raise ValueError(
                 f"коэффициент {name} вне допустимого диапазона"
