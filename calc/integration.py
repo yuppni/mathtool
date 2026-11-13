@@ -4,10 +4,12 @@ MAX_STEPS = 100000
 
 
 def ratio(x):
+    """Возвращает значение функции x / (x + 1) в точке x."""
     return x / (x + 1)
 
 
 def root(x):
+    """Возвращает значение функции sqrt(x^2 + 1) в точке x."""
     return sqrt(x * x + 1)
 
 
@@ -21,6 +23,7 @@ FUNCTIONS = {
 
 # Проверяем параметры до вычисления и вывода формулы
 def validate(a, b, steps, low, high, inclusive):
+    """Проверяет пределы, число шагов и принадлежность промежутку с учётом включения границ."""
     if not isfinite(a) or not isfinite(b):
         raise ValueError("пределы должны быть конечными числами")
 
@@ -41,6 +44,7 @@ def validate(a, b, steps, low, high, inclusive):
 
 # Общий расчёт: формула передаётся параметром F
 def integrate(F, a, b, steps):
+    """Возвращает интеграл функции F от a до b методом левых прямоугольников за steps шагов."""
     dx = (b - a) / steps
     result = 0
 

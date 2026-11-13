@@ -6,6 +6,7 @@ from calc.integration import FUNCTIONS, integrate, validate as validate_integral
 from cli import create_parser
 
 def handle_solve(args):
+    """Получает коэффициенты из args или с клавиатуры, выводит решение и возвращает код 0."""
     # Коэффициенты должны быть заданы все вместе либо отсутствовать
     coefficients = (args.a, args.b, args.c)
 
@@ -41,6 +42,7 @@ def handle_solve(args):
 
 # Читаем числа из переданного источника
 def read_numbers(source):
+    """Читает числа из потока source, проверяет их и возвращает список."""
     values = []
 
     for line in source:
@@ -56,6 +58,7 @@ def read_numbers(source):
 
 
 def handle_stats(args):
+    """Читает числа из файла или стандартного ввода, выводит статистику и возвращает код 0."""
     # Файл автоматически закроется после чтения
     if args.input is not None:
         with open(args.input, encoding="utf-8-sig") as source:
@@ -75,6 +78,7 @@ def handle_stats(args):
     return 0
 
 def handle_series(args):
+    """Вычисляет ряд по параметрам args, выводит сумму и число слагаемых и возвращает код 0."""
     # Получаем функцию слагаемого и запись формулы
     term, formula = FORMULAS[args.func]
 
@@ -92,6 +96,7 @@ def handle_series(args):
     return 0
 
 def handle_integrate(args):
+    """Вычисляет интеграл по параметрам args, выводит формулу и значение и возвращает код 0."""
     # Получаем функцию, формулу и допустимые границы
     F, formula, low, high, inclusive = FUNCTIONS[args.func]
 
@@ -115,6 +120,7 @@ HANDLERS = {
 
 
 def main(argv):
+    """Разбирает аргументы argv, запускает обработчик команды и обрабатывает ошибки данных и файлов."""
     parser = create_parser()
     args = parser.parse_args(argv)
 

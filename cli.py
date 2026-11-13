@@ -4,6 +4,7 @@ from calc.integration import FUNCTIONS
 
 
 def create_parser():
+    """Создаёт и возвращает разборщик команд и параметров приложения."""
     # Общий разборщик командной строки
     parser = ArgumentParser(
         prog="mathtool",
