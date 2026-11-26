@@ -106,6 +106,8 @@ def handle_integrate(args):
     # Выводим только после успешной проверки и расчёта
     print(formula)
     print(f"Значение интеграла: {result:.4f}")
+    return 0
+
 def read_array(path):
     """Читает массив из файла или с клавиатуры и проверяет его."""
     if path is not None:
@@ -216,7 +218,7 @@ def handle_search(args):
         f"Значение {args.value} имеет элемент с индексом {index + 1}."
     )
     return 0
-    return 0
+
 # Каждой команде соответствует свой обработчик
 HANDLERS = {
     "solve": handle_solve,
