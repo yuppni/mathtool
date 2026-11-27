@@ -1,6 +1,8 @@
 from argparse import *
 from calc.series import FORMULAS
 from calc.integration import FUNCTIONS
+from calc.arrays import MIN_VALUE, MAX_VALUE
+from calc.sorting import METHODS
 
 
 def create_parser():
@@ -64,6 +66,64 @@ def create_parser():
         "--steps", type=int, required=True,
         help="количество прямоугольников"
     )
+    # Генерация массива
+    fill_parser = commands.add_parser(
+        "fill", help="генерация массива", allow_abbrev=False
+    )
+    fill_parser.add_argument(
+        "-c", "--count", type=int, required=True,
+        help="количество элементов"
+    )
+    fill_parser.add_argument(
+        "--min", type=int, default=MIN_VALUE,
+        help="нижняя граница значений"
+    )
+    fill_parser.add_argument(
+        "--max", type=int, default=MAX_VALUE,
+        help="верхняя граница значений"
+    )
+    fill_parser.add_argument(
+        "--seed", type=int,
+        help="начальное значение генератора"
+    )
+    fill_parser.add_argument(
+        "-o", "--output",
+        help="файл для созданного массива"
+    )
 
+    # Сортировка массива
+    sort_parser = commands.add_parser(
+        "sort", help="сортировка массива", allow_abbrev=False
+    )
+    sort_parser.add_argument(
+        "-m", "--method", required=True,
+        choices=sorted(METHODS),
+        help="метод сортировки"
+    )
+    sort_parser.add_argument(
+        "--order", choices=["asc", "desc"], default="asc",
+        help="направление: asc — возрастание, desc — убывание"
+    )
+    sort_parser.add_argument(
+        "-i", "--input",
+        help="файл с исходным массивом"
+    )
+    sort_parser.add_argument(
+        "-o", "--output",
+        help="файл для отсортированного массива"
+    )
+
+    # Двоичный поиск
+    search_parser = commands.add_parser(
+        "search", help="поиск числа в массиве", allow_abbrev=False
+    )
+    search_parser.add_argument(
+        "-v", "--value", type=int, required=True,
+        help="искомое целое число"
+    )
+    search_parser.add_argument(
+        "-i", "--input",
+        help="файл с массивом по возрастанию"
+    )
     # Возвращаем настроенный разборщик в mathtool.py
     return parser
