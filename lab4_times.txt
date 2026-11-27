@@ -1,0 +1,170 @@
+﻿**********************
+Начало записи сценария Windows PowerShell
+Время начала: 20261127123618
+Имя пользователя: VARVARA\varva
+Запуск от имени пользователя: VARVARA\varva
+Имя конфигурации: 
+Компьютер: VARVARA (Microsoft Windows NT 10.0.26200.0)
+Ведущее приложение: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\varva\AppData\Local\Programs\Microsoft VS Code\69047191fc\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+ИД процесса: 17220
+PSVersion: 5.1.26100.9818
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9818
+BuildVersion: 10.0.26100.9818
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Транскрибирование запущено, выходной файл lab4_times.txt
+PS C:\Users\varva\OneDrive\Документы\GitHub\mathtool> foreach ($n in 1000, 3000, 10000) {
+    python mathtool.py fill -c $n --seed 1 -o "data_$n.txt"
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Ошибка создания данных'
+    }
+
+    foreach ($method in 'bubble', 'selection', 'insertion', 'counting', 'quick', 'merge', 'heap') {
+        foreach ($run in 1, 2, 3) {
+            Write-Host "Размер $n; метод $method; повтор $run"
+            python mathtool.py sort -m $method --order asc -i "data_$n.txt" -o "results_lab4/${n}_${method}.txt"
+
+            if ($LASTEXITCODE -ne 0) {
+                throw 'Ошибка сортировки'
+            }
+        }
+    }
+}
+
+Размер 1000; метод bubble; повтор 1
+
+Размер 1000; метод bubble; повтор 2
+
+Размер 1000; метод bubble; повтор 3
+
+Размер 1000; метод selection; повтор 1
+
+Размер 1000; метод selection; повтор 2
+
+Размер 1000; метод selection; повтор 3
+
+Размер 1000; метод insertion; повтор 1
+
+Размер 1000; метод insertion; повтор 2
+
+Размер 1000; метод insertion; повтор 3
+
+Размер 1000; метод counting; повтор 1
+
+Размер 1000; метод counting; повтор 2
+
+Размер 1000; метод counting; повтор 3
+
+Размер 1000; метод quick; повтор 1
+
+Размер 1000; метод quick; повтор 2
+
+Размер 1000; метод quick; повтор 3
+
+Размер 1000; метод merge; повтор 1
+
+Размер 1000; метод merge; повтор 2
+
+Размер 1000; метод merge; повтор 3
+
+Размер 1000; метод heap; повтор 1
+
+Размер 1000; метод heap; повтор 2
+
+Размер 1000; метод heap; повтор 3
+
+
+Размер 3000; метод bubble; повтор 1
+
+Размер 3000; метод bubble; повтор 2
+
+Размер 3000; метод bubble; повтор 3
+
+Размер 3000; метод selection; повтор 1
+
+Размер 3000; метод selection; повтор 2
+
+Размер 3000; метод selection; повтор 3
+
+Размер 3000; метод insertion; повтор 1
+
+Размер 3000; метод insertion; повтор 2
+
+Размер 3000; метод insertion; повтор 3
+
+Размер 3000; метод counting; повтор 1
+
+Размер 3000; метод counting; повтор 2
+
+Размер 3000; метод counting; повтор 3
+
+Размер 3000; метод quick; повтор 1
+
+Размер 3000; метод quick; повтор 2
+
+Размер 3000; метод quick; повтор 3
+
+Размер 3000; метод merge; повтор 1
+
+Размер 3000; метод merge; повтор 2
+
+Размер 3000; метод merge; повтор 3
+
+Размер 3000; метод heap; повтор 1
+
+Размер 3000; метод heap; повтор 2
+
+Размер 3000; метод heap; повтор 3
+
+
+Размер 10000; метод bubble; повтор 1
+
+Размер 10000; метод bubble; повтор 2
+
+Размер 10000; метод bubble; повтор 3
+
+Размер 10000; метод selection; повтор 1
+
+Размер 10000; метод selection; повтор 2
+
+Размер 10000; метод selection; повтор 3
+
+Размер 10000; метод insertion; повтор 1
+
+Размер 10000; метод insertion; повтор 2
+
+Размер 10000; метод insertion; повтор 3
+
+Размер 10000; метод counting; повтор 1
+
+Размер 10000; метод counting; повтор 2
+
+Размер 10000; метод counting; повтор 3
+
+Размер 10000; метод quick; повтор 1
+
+Размер 10000; метод quick; повтор 2
+
+Размер 10000; метод quick; повтор 3
+
+Размер 10000; метод merge; повтор 1
+
+Размер 10000; метод merge; повтор 2
+
+Размер 10000; метод merge; повтор 3
+
+Размер 10000; метод heap; повтор 1
+
+Размер 10000; метод heap; повтор 2
+
+Размер 10000; метод heap; повтор 3
+
+PS C:\Users\varva\OneDrive\Документы\GitHub\mathtool> Stop-Transcript
+**********************
+Конец записи протокола Windows PowerShell
+Время окончания: 20261127123810
+**********************
